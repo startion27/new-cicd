@@ -8,23 +8,9 @@ on:
     - cron: '30 5 * * 2,4'
 
 jobs:
-  echo:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo 'Hello, Github Actions'
-
-  pwd-ls:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print working directory
-        run: pwd
-      - name: Change Directory and List files
-        run: |
-          cd ~
-          ls -al
-
+  # (위의 echo, pwd-ls 그대로 두고)
   test_schedule:
-    if: ${{ github.event_name == 'schedule' }}      # 스케줄로 돌 때만 실행
+    if: ${{ github.event_name == 'schedule' }}
     runs-on: ubuntu-latest
     steps:
       - name: Not on Monday or Wednesday
